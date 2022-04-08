@@ -1,7 +1,7 @@
 {
-  "name": "go-project",
+  "name": "grpc-server-go",
   "dockerComposeFile": ["./docker-compose.yml"],
-  "service": "go-project",
+  "service": "grpc-server-go",
   "shutdownAction": "stopCompose",
   "extensions": [
     "golang.go",
@@ -20,5 +20,5 @@
     },
     "editor.formatOnSave": true
   },
-  "workspaceFolder": "/root/workdir"
+  "workspaceFolder": "/go/src/workdir"
 }

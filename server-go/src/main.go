@@ -16,12 +16,12 @@ func main() {
 	grpcServer := grpc.NewServer()
 	var server Server
 	countries.RegisterCountryServer(grpcServer, server)
-	listen, err := net.Listen("tcp", "0.0.0.0:3000")
+	listen, err := net.Listen("tcp", "grpc-server-go:8000")
 	if err != nil {
-		log.Fatalf("could not listen to 0.0.0.0:3000 %v", err)
+		log.Fatalf("could not listen to grpc-server-go:8000 %v", err)
 	}
 	log.Println("Server starting...")
-	log.Fatal(grpcServer.Serve(listen))
+	log.Println(grpcServer.Serve(listen))
 }
 
 // Server is implementation proto interface
@@ -29,7 +29,7 @@ type Server struct{}
 
 // Search function responsible to get the Country information
 func (Server) Search(ctx context.Context, request *countries.CountryRequest) (*countries.CountryResponse, error) {
-	resp, err := http.Get("https://restcountries.eu/rest/v2/name/ " + request.Name)
+	resp, err := http.Get("https://restcountries.com/v2/name/" + request.Name)
 	if err != nil {
 		return nil, err
 	}

@@ -1,0 +1,8 @@
+{
+    "name": "grpc-client-python",
+    "dockerComposeFile": ["./docker-compose.yml"],
+    "service": "grpc-client-python",
+    "shutdownAction": "stopCompose",
+    "extensions": ["ms-python.python"], 
+    "workspaceFolder": "/root/workdir"
+}

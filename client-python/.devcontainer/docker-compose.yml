@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  grpc-client-python:
+    build:
+      context: ../
+      dockerfile: ./Dockerfile  
+    volumes:
+      - ../:/root/workdir
+    env_file:
+      - ../.env
+    stdin_open: true
+    tty: true
+
+networks: 
+  default: 
+    external: 
+      name: grpc-go
