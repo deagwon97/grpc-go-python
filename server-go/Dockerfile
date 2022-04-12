@@ -1,8 +1,10 @@
 FROM golang:latest AS builder
 
 RUN apt-get update -y &&\
-    apt-get upgrade -y
-
+    apt-get upgrade -y &&\
+    apt-get install protobuf-compiler -y &&\
+    apt-get install golang-goprotobuf-dev -y
+    
 ENV GO111MODULE=on \
     CGO_ENABLED=0 \
     GOOS=linux

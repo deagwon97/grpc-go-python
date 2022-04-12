@@ -8,21 +8,11 @@ import (
 	"net"
 	"net/http"
 
+	pb "grpc-go/helloworld/proto"
+
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 )
-
-func main() {
-	grpcServer := grpc.NewServer()
-	var server Server
-	countries.RegisterCountryServer(grpcServer, server)
-	listen, err := net.Listen("tcp", "grpc-server-go:8000")
-	if err != nil {
-		log.Fatalf("could not listen to grpc-server-go:8000 %v", err)
-	}
-	log.Println("Server starting...")
-	log.Println(grpcServer.Serve(listen))
-}
 
 // Server is implementation proto interface
 type Server struct{}
@@ -43,4 +33,30 @@ func (Server) Search(ctx context.Context, request *countries.CountryRequest) (*c
 		return nil, err
 	}
 	return &data[0], nil
+}
+
+// helloWorld server
+
+type helloWorldServer struct {
+	pb.UnimplementedGreeterServer
+}
+
+func (s *helloWorldServer) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
+	log.Printf("Received: %v", in.GetName())
+	return &pb.HelloReply{Message: "Hello " + in.GetName()}, nil
+}
+
+func main() {
+	grpcServer := grpc.NewServer()
+	var server Server
+	countries.RegisterCountryServer(grpcServer, server)
+
+	pb.RegisterGreeterServer(grpcServer, &helloWorldServer{})
+
+	listen, err := net.Listen("tcp", "grpc-server-go:8000")
+	if err != nil {
+		log.Fatalf("could not listen to grpc-server-go:8000 %v", err)
+	}
+	log.Println("Server starting...")
+	log.Println(grpcServer.Serve(listen))
 }
