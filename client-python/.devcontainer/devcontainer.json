@@ -3,6 +3,6 @@
     "dockerComposeFile": ["./docker-compose.yml"],
     "service": "grpc-client-python",
     "shutdownAction": "stopCompose",
-    "extensions": ["ms-python.python"], 
+    "extensions": ["ms-python.python", "plex.vscode-protolint", "zxh404.vscode-proto3"], 
     "workspaceFolder": "/root/workdir"
 }

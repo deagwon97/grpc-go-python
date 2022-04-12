@@ -7,6 +7,7 @@ services:
       dockerfile: ./Dockerfile  
     volumes:
       - ../:/root/workdir
+      - ../../proto:/root/workdir/proto
     env_file:
       - ../.env
     stdin_open: true
