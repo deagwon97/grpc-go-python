@@ -8,11 +8,10 @@ services:
       target: builder
     volumes:
       - ../:/go/src/workdir
+      # synchronize with parent's proto
       - ../../proto:/go/src/workdir/proto
     env_file:
       - ../.env
-    # ports:
-    #   - 8000:8000
     stdin_open: true
     tty: true
     
