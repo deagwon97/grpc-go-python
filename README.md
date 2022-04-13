@@ -8,16 +8,15 @@
   - Docker Extension(ms-azuretools.vscode-docker)
 
 ## Start
+### Set up on local
 ```console
 // clone source code
-$ git clone https://github.com/deagwon97/grpc-go-python.git
+> git clone https://github.com/deagwon97/grpc-go-python.git
 
 // create a docker network for comunication between containers.
-$ sh create-network.sh
+> sh create-network.sh
 ```
-
-## Run DevContainers
-### gRPC Server
+### Run gRPC Server in DevContainers
 1. Open command palette
 2. select "> remote-containers: open Folder in container.."
 3. select "grpc-go-python/server-go" directory
@@ -27,7 +26,7 @@ $ sh create-network.sh
 # sh gen_proto_code.sh
 # go run .
 ```
-### gRPC Client
+### Run gRPC Client in DevContainers
 1. Open New VScode window
 2. Open command palette
 3. select "> remote-containers: open Folder in container.."
