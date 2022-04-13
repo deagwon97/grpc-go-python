@@ -2,12 +2,20 @@ from flask import Flask
 from flask import jsonify
 app = Flask(__name__)
 import grpc
-import countries_pb2
-import countries_pb2_grpc
+
+import sys
+sys.path.append("./countries")
+sys.path.append("./helloworld")
+
+from countries import countries_pb2
+from countries import countries_pb2_grpc
+
+from helloworld import helloworld_pb2
+from helloworld import helloworld_pb2_grpc
 
 def obj_to_dict(obj):return obj.__dict__
 
-@app.route('/<countrie>')
+@app.route('/countries/<countrie>')
 def countrie(countrie): 
     try:
         channel = grpc.insecure_channel("grpc-server-go:8000")
@@ -21,6 +29,21 @@ def countrie(countrie):
             "subregion": countryResponse.subregion,
             "population": countryResponse.population,
             "nativeName": countryResponse.nativeName
+        })
+    except Exception as e:
+      print(e)
+      return e
+
+
+@app.route('/helloworld/<name>')
+def helloWorld(name): 
+    try:
+        channel = grpc.insecure_channel("grpc-server-go:8000")
+        stub = helloworld_pb2_grpc.GreeterStub(channel)
+        helloRequest = helloworld_pb2.HelloRequest(name=name)
+        helloResponse = stub.SayHello(helloRequest)
+        return jsonify({
+            "message": helloResponse.message
         })
     except Exception as e:
       print(e)

@@ -59,7 +59,6 @@ class Country(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        print("hi")
         return grpc.experimental.unary_unary(request, target, '/countries.Country/Search',
             countries__pb2.CountryRequest.SerializeToString,
             countries__pb2.CountryResponse.FromString,

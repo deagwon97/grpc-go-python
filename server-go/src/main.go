@@ -8,7 +8,7 @@ import (
 	"net"
 	"net/http"
 
-	pb "grpc-go/helloworld/proto"
+	pb "grpc-go/helloworld"
 
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
@@ -36,7 +36,6 @@ func (Server) Search(ctx context.Context, request *countries.CountryRequest) (*c
 }
 
 // helloWorld server
-
 type helloWorldServer struct {
 	pb.UnimplementedGreeterServer
 }
