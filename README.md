@@ -23,7 +23,9 @@
 4. run server in server-go container
 ```console
 # cd ./src
+// Create go grpc file from common proto file.
 # sh gen_proto_code.sh
+// run server
 # go run .
 ```
 ### Run gRPC Client in DevContainers
@@ -34,7 +36,9 @@
 5. run server in client-python container
 ```console
 # cd ./src
+// Create python grpc file from common proto file.
 # sh gen_proto_code.sh
+// run client server
 # python3 app.py
 ```
 
