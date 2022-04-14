@@ -1,4 +1,4 @@
-<img src="./assets/grpc-icon-color.png"/>
+<img width="50%" src="./assets/grpc-icon-color.png"/>
 
 ## gRPC with Golang and Python
 
