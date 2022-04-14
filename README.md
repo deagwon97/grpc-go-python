@@ -6,7 +6,7 @@
 
 <img src="./assets/grpc-example.png"/>
 
-These are examples of calling a function implemented in golang in python using gRPC.
+This is a example of calling functions implemented in golang in python using gRPC.
 
 There are two containers, gRPC server container and gRPC client container respectively.
 
