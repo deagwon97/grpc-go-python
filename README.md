@@ -1,4 +1,14 @@
+<img src="./assets/grpc-icon-color.png"/>
+
 ## gRPC with Golang and Python
+
+<img src="./assets/grpc-example.png"/>
+
+These are examples of calling a function implemented in golang in python using gRPC.
+
+There are two containers, gRPC server container and gRPC client container respectively.
+
+I implemented the restcontries(https://restcountries.com/) function introduced as an example in some blogs and the helloword function posted in the gRPC official documentation.
 
 ## Prerequisites
 - Docker 20.10.12
@@ -22,9 +32,12 @@
 3. select "grpc-go-python/server-go" directory
 4. run server in server-go container
 ```console
+// change directory
 # cd ./src
+
 // Create go grpc file from common proto file.
 # sh gen_proto_code.sh
+
 // run server
 # go run .
 ```
@@ -35,9 +48,12 @@
 4. select "grpc-go-python/client-python" directory
 5. run server in client-python container
 ```console
+// change directory
 # cd ./src
+
 // Create python grpc file from common proto file.
 # sh gen_proto_code.sh
+
 // run client server
 # python3 app.py
 ```
